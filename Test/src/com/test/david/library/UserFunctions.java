@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
@@ -26,6 +27,14 @@ public class UserFunctions {
      
     private static String login_tag = "login";
     private static String register_tag = "newUser";
+    
+    private static String url_function = "function=";
+    private static String url_full_name = "full_name=";
+    private static String url_username = "username=";
+    private static String url_password = "password=";
+    private static String url_email = "email=";
+    private static String url_home_id = "home_id=";
+    private static String url_home_password = "home_password=";
      
     // constructor
     public UserFunctions(){
@@ -43,7 +52,8 @@ public class UserFunctions {
         params.add(new BasicNameValuePair("function", login_tag));
         params.add(new BasicNameValuePair("login", username));
         params.add(new BasicNameValuePair("password", password));
-        JSONObject json = jsonParser.getJSONFromUrl(loginURL, params);
+        JSONObject json = jsonParser.getJSONFromUrl(loginURL);
+//        JSONObject json = jsonParser.getJSONFromUrl(loginURL, params);
         // return json
         // Log.e("JSON", json.toString());
         return json;
@@ -69,13 +79,21 @@ public class UserFunctions {
         params.add(new BasicNameValuePair("email", email));
         params.add(new BasicNameValuePair("home_id", homeID));
         params.add(new BasicNameValuePair("home_password", homePassword));
-                 
-        // getting JSON Object
-        JSONObject json = jsonParser.getJSONFromUrl(registerURL, params);
         
+        String finalURL = registerURL + "?"+ url_function + register_tag + "&" + url_full_name + fullName + "&" + url_username + username + "&" + url_password + password + "&" + url_email + email + "&" + url_home_id + homeID + "&" + url_home_password + homePassword;
 
+        // getting JSON Object
+        JSONObject json = jsonParser.getJSONFromUrl(finalURL);
+//        JSONObject json = jsonParser.getJSONFromUrl(registerURL, params);
         
-        // return json
+        // Trying to show the success value from the json object
+        try {
+			Log.e("URL", json.getString("success"));
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
         return json;
     }
      
