@@ -1,9 +1,10 @@
 package com.test.david;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -26,6 +27,9 @@ public class NewAccountActivity extends Activity implements OnClickListener{
     EditText inputHomeID;
     EditText inputHomePassword;
     Button NewAccount;
+    
+    boolean finishActivity = false;
+    
     
     // JSON Response node names
     private static String KEY_SUCCESS = "success";
@@ -60,47 +64,77 @@ public class NewAccountActivity extends Activity implements OnClickListener{
 	}
 
 	public void onClick(View v){
-		String fullName = inputFullName.getText().toString();
-		String username = inputUserName.getText().toString();
-		String password = inputPassword.getText().toString();
-        String email = inputEmail.getText().toString();
-        String homeID = inputHomeID.getText().toString();
-        String homePassword = inputHomePassword.getText().toString();
-        UserFunctions userFunction = new UserFunctions();
-        JSONObject json = userFunction.registerUser(fullName, username, password, email, homeID, homePassword);
- 
-    	// check for login response
-//        try {
-//            if (json.getString(KEY_SUCCESS) != null) {
-//            	String res = json.getString(KEY_SUCCESS);
-//            	
-//            	// Receive response from the server DB
-//            	JSONObject json_user = json.getJSONObject("user");
-//            	// Show the create account message given by the server DB
-//                Toast.makeText(getBaseContext(), json_user.getString(KEY_MESSAGE), Toast.LENGTH_SHORT).show();
-//                if(Integer.parseInt(res) == 1){
-//                    //// User Successfully Registred
-//                	// Store user details in SQLite Database
-//                    DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-//                     
-//                    // Clear all previous data in database
-//                    userFunction.logoutUser(getApplicationContext());
-//                    db.addUser(json_user.getString(KEY_NAME), json_user.getString(KEY_EMAIL), json.getString(KEY_UID), json_user.getString(KEY_CREATED_AT));                        
-//                    
-//                    // Launch Dashboard Screen
-//                                        
-//                    // Close Registration Screen
-//                    finish();
-//                }
-//                else{
-//                	
-//                }
-//            }
-//            
-//        	Log.e("Response", json.getString(KEY_SUCCESS));
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
+		final UserFunctions userFunction = new UserFunctions();
+		new AsyncTask<String, Void, String>() {
+			
+			@Override
+	        protected void onPreExecute()
+	        {
+	            // here is for code you do before the network call. you 
+	            // leave it empty
+	        }
+
+	        @Override
+	        protected String doInBackground(String... params)
+	        {
+	            // here goes your network call
+	        	String fullName = inputFullName.getText().toString();
+	    		String username = inputUserName.getText().toString();
+	    		String password = inputPassword.getText().toString();
+	            String email = inputEmail.getText().toString();
+	            String homeID = inputHomeID.getText().toString();
+	            String homePassword = inputHomePassword.getText().toString();
+	            
+	        	String jsonString = userFunction.registerUser(fullName, username, password, email, homeID, homePassword);
+	        	return jsonString;
+	        }
+
+	        @Override
+	        protected void onPostExecute(String res)
+	        {
+	            // here goes your UI code. i.e if you want to hide a button
+	            try {
+
+	            	JSONObject json = new JSONObject(res);
+	            	
+	                if (json.getString(KEY_SUCCESS) != null) {
+	                	String successResponse = json.getString(KEY_SUCCESS);
+	                	
+	                    if(Integer.parseInt(successResponse) == 1){
+	                    	Log.e("JSON String", "PROBANDO 2");
+	    	        	    
+	                    	//// User Successfully Registred
+	    	        	    
+	    	        	    // Receive response from the server DB
+		                	JSONObject json_user = json.getJSONObject("user");
+		                	
+		                	Log.e("JSON String", json_user.getString("username"));
+		                	
+	                    	// Show the create account message given by the server DB
+		                    Toast.makeText(getBaseContext(), json.getString(KEY_MESSAGE), Toast.LENGTH_SHORT).show();
+	                        
+	                    	// Store user details in SQLite Database
+	                        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+	                         
+	                        // Clear all previous data in database
+	                        userFunction.logoutUser(getApplicationContext());
+	                        db.addUser(json_user.getString(KEY_NAME), json_user.getString(KEY_EMAIL), json.getString(KEY_UID), json_user.getString(KEY_CREATED_AT));                        
+	                        	                        
+	                        // Close Registration Screen
+	                        
+	                    }
+	                    else{
+	                    	
+	                    }
+	                    
+	                }
+	            } catch (Exception e) {
+	                e.printStackTrace();
+	            }        
+	        }
+
+	    }.execute();
+	
 	}
 
 }

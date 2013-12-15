@@ -25,6 +25,7 @@ public class MainActivity extends Activity {
 	public void CreateAccount (View view){
 		Intent intentNewAccount = new Intent(this, NewAccountActivity.class);
 		startActivity(intentNewAccount);
+		finish();
 	}
 
 	public void LogIn (View view){

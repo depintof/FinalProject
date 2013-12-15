@@ -3,14 +3,10 @@ package com.test.david.library;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import android.content.Context;
-import android.util.Log;
 
 public class UserFunctions {
 	private JSONParser jsonParser;
@@ -35,6 +31,8 @@ public class UserFunctions {
     private static String url_email = "email=";
     private static String url_home_id = "home_id=";
     private static String url_home_password = "home_password=";
+    
+    String finalResult = "";
      
     // constructor
     public UserFunctions(){
@@ -46,16 +44,19 @@ public class UserFunctions {
      * @param username
      * @param password
      * */
-    public JSONObject loginUser(String username, String password){
+//    public JSONObject loginUser(String username, String password){
+    public String loginUser(String username, String password){
+    	
         // Building Parameters
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("function", login_tag));
         params.add(new BasicNameValuePair("login", username));
         params.add(new BasicNameValuePair("password", password));
-        JSONObject json = jsonParser.getJSONFromUrl(loginURL);
+        
+//        JSONObject json = jsonParser.getJSONFromUrl(loginURL);
+        String json = jsonParser.getJSONFromUrl(loginURL);
 //        JSONObject json = jsonParser.getJSONFromUrl(loginURL, params);
-        // return json
-        // Log.e("JSON", json.toString());
+
         return json;
     }
      
@@ -68,7 +69,8 @@ public class UserFunctions {
      * @param homeID
      * @param homePassword
      * */
-    public JSONObject registerUser(String fullName, String username, String password, String email, String homeID, String homePassword){
+//    public JSONObject registerUser(String fullName, String username, String password, String email, String homeID, String homePassword){
+    public String registerUser(String fullName, String username, String password, String email, String homeID, String homePassword){
 
     	// Building Parameters
         List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -80,21 +82,15 @@ public class UserFunctions {
         params.add(new BasicNameValuePair("home_id", homeID));
         params.add(new BasicNameValuePair("home_password", homePassword));
         
-        String finalURL = registerURL + "?"+ url_function + register_tag + "&" + url_full_name + fullName + "&" + url_username + username + "&" + url_password + password + "&" + url_email + email + "&" + url_home_id + homeID + "&" + url_home_password + homePassword;
+        final String finalURL = registerURL + "?"+ url_function + register_tag + "&" + url_full_name + fullName + "&" + url_username + username + "&" + url_password + password + "&" + url_email + email + "&" + url_home_id + homeID + "&" + url_home_password + homePassword;
 
         // getting JSON Object
-        JSONObject json = jsonParser.getJSONFromUrl(finalURL);
+        String jsonString = jsonParser.getJSONFromUrl(finalURL);
+        
 //        JSONObject json = jsonParser.getJSONFromUrl(registerURL, params);
+//        Log.e("JSON String", jsonString);
         
-        // Trying to show the success value from the json object
-        try {
-			Log.e("URL", json.getString("success"));
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        
-        return json;
+        return jsonString;
     }
      
     /**
