@@ -13,9 +13,6 @@ public class UserFunctions {
     
     // Testing in localhost using wamp or xampp 
     // use http://10.0.2.2/ to connect to your localhost ie http://localhost/
-	// Probe at house
-//    private static String loginURL = "http://192.168.1.3/api/";
-//    private static String registerURL = "http://192.168.1.3/api/";
     
 	// Probe on Raspberry
     private static String loginURL = "http://181.54.32.81:8086/";

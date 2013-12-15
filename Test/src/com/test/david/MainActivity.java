@@ -1,6 +1,9 @@
 package com.test.david;
 
 import android.app.Activity;
+
+
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,6 +11,12 @@ import android.view.View;
 
 public class MainActivity extends Activity {
 
+	final int LOGIN = 1;
+	
+	public MainActivity(){
+		
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -25,7 +34,6 @@ public class MainActivity extends Activity {
 	public void CreateAccount (View view){
 		Intent intentNewAccount = new Intent(this, NewAccountActivity.class);
 		startActivity(intentNewAccount);
-		finish();
 	}
 
 	public void LogIn (View view){

@@ -52,6 +52,8 @@ public class JSONParser {
             e.printStackTrace();
             
             Log.e("JSON", "Functional 3");
+            
+            return null;
         }
     	
         try {
@@ -68,18 +70,8 @@ public class JSONParser {
         } catch (Exception e) {
             Log.e("Buffer Error", "Error converting result " + e.toString());
         }
-        
-//        Log.e("JSON String", json);
+
 		return json;
  }
-
-    
-    
-    
-    
-    
-    
-    
-    
     
 }
