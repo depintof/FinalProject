@@ -11,6 +11,8 @@
     <!-- ACTION BAR STYLE -->
     <style name="ThemeSelector" parent="android:Theme.Holo">
         <item name="android:actionBarStyle">@style/ActionBar</item>
+        <item name="android:actionBarTabStyle">@style/MyActionBarTabStyle</item>
+        <item name="android:actionBarTabTextStyle">@style/MyActionBarTabTextStyle</item>
         
     </style>
  
@@ -22,5 +24,19 @@
     <style name="ThemeSelector.ActionBar.Text" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/main_activity_color</item>
     </style>
+    
+    <style name="MyActionBarTabStyle" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse"> 
+		<item name="android:background">@drawable/actionbar_tab_bg</item> 
+		<item name="android:paddingLeft">10dp</item> 
+		<item name="android:paddingRight">10dp</item> 
+	</style>
+	
+    <style name="MyActionBarTabTextStyle"> 
+		<item name="android:textColor">@color/main_activity_color</item>
+		<item name="android:gravity">center</item>
+		<item name="android:layout_gravity">center</item>
+		<item name="android:textStyle">bold</item>
+		
+	</style>
     
 </resources>

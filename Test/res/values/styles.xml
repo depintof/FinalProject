@@ -22,6 +22,7 @@
     <style name="ThemeSelector" parent="android:Theme.Light">
         <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>
         <item name="android:windowTitleStyle">@style/windowTitleStyle</item>
+        <item name="android:actionBarTabStyle">@style/MyActionBarTabStyle</item>
     </style>
  
     <style name="WindowTitleBackground">     
@@ -35,6 +36,13 @@
 	    <item name="android:textStyle">bold</item>
 	    <item name="android:textSize">16sp</item>
   	</style>
+  	
+    
+    <style name="MyActionBarTabStyle"> 
+		<item name="android:background">@drawable/actionbar_tab_bg</item> 
+		<item name="android:paddingLeft">32dp</item> 
+		<item name="android:paddingRight">32dp</item> 
+	</style>
     
 	
     <!-- 1st ACTIVITY BUTTON STYLES -->
@@ -54,7 +62,7 @@
   	</style>
     
     <!-- Styles for the Sign In Button -->
-    <style name="sign_in_button" >
+    <style name="log_in_button" >
 	    <item name="android:layout_width" >fill_parent</item>
 	    <item name="android:layout_height" >wrap_content</item>
 	    <item name="android:textColor" >@color/dark_blue</item>

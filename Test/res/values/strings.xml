@@ -7,11 +7,11 @@
     <string name="hello_world">Hello world!</string>
     <string name="username">Usuario</string>
     <string name="password">Contraseña</string>
-    <string name="sign_in">Iniciar Sesión</string>
+    <string name="log_in">Iniciar Sesión</string>
     <string name="create_new_account">Crear una cuenta nueva</string>
     <string name="home_logo">Logo</string>
     <string name="forgotten_password">Olvidé mi contraseña</string>
-    
+
     <!-- Strings Activity 2 -->
     <string name="title_activity_new_account">Nueva Cuenta</string>
     <string name="new_account">CUENTA NUEVA</string>
@@ -22,5 +22,9 @@
     <string name="home_id">ID Casa</string>
     <string name="home_password">Contraseña Casa</string>
     <string name="create_account">Crear Cuenta</string>
-
+    <string name="title_activity_lights_control">LightsControl</string>
+    
+    <!-- Strings Activity 3 -->
+    <string name="lights_control">Control de Luces</string>
+    
 </resources>

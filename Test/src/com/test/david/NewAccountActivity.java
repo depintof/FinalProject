@@ -86,13 +86,6 @@ public class NewAccountActivity extends Activity implements OnClickListener{
 		        @Override
 		        protected String doInBackground(String... params)
 		        {
-//		            // here goes your network call
-//		        	String fullName = inputFullName.getText().toString();
-//		    		String username = inputUserName.getText().toString();
-//		    		String password = inputPassword.getText().toString();
-//		            String email = inputEmail.getText().toString();
-//		            String homeID = inputHomeID.getText().toString();
-//		            String homePassword = inputHomePassword.getText().toString();
 		            
 		            // here goes your network call
 		        	String fullName = URLEncoder.encode(inputFullName.getText().toString());
@@ -137,6 +130,7 @@ public class NewAccountActivity extends Activity implements OnClickListener{
 			                    	// Store user details in SQLite Database
 			                        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
 			                         
+			                        // NOT WORKING			                        
 			                        // Clear all previous data in database
 			                        userFunction.logoutUser(getApplicationContext());
 			                        db.addUser(json_user.getString(KEY_NAME), json_user.getString(KEY_EMAIL), json.getString(KEY_UID), json_user.getString(KEY_CREATED_AT));                        

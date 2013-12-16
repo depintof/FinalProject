@@ -50,11 +50,14 @@ public class UserFunctions {
         params.add(new BasicNameValuePair("login", username));
         params.add(new BasicNameValuePair("password", password));
         
+        final String finalURL = loginURL + "?"+ url_function + login_tag + "&" + login_tag + "=" + username + "&" + url_password + password; 
+        
 //        JSONObject json = jsonParser.getJSONFromUrl(loginURL);
-        String json = jsonParser.getJSONFromUrl(loginURL);
-//        JSONObject json = jsonParser.getJSONFromUrl(loginURL, params);
+        String json = jsonParser.getJSONFromUrl(finalURL);
 
+//        JSONObject json = jsonParser.getJSONFromUrl(loginURL, params);
         return json;
+
     }
      
     /**
@@ -112,4 +115,6 @@ public class UserFunctions {
         db.resetTables();
         return true;
     }
+
+    
 }
