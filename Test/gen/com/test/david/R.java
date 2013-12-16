@@ -11,14 +11,14 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
-        public static final int back_sign_in_button=0x7f040007;
+        public static final int back_sign_in_button=0x7f040006;
         public static final int bar_background=0x7f040000;
         public static final int black=0x7f040005;
         public static final int dark_blue=0x7f040004;
-        public static final int fill_info=0x7f040008;
-        public static final int fill_info_background=0x7f040009;
-        public static final int first_activity_fill_info=0x7f040006;
+        public static final int fill_info=0x7f040007;
+        public static final int fill_info_background=0x7f040008;
         public static final int main_activity_color=0x7f040001;
+        public static final int pressed_example=0x7f040009;
         public static final int transparent=0x7f040003;
         public static final int underlined_text=0x7f040002;
     }
@@ -33,18 +33,50 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
-        public static final int actionbar_tab_bg=0x7f020000;
-        public static final int activitys_background=0x7f020001;
-        public static final int background=0x7f020002;
-        public static final int create_account_button=0x7f020003;
-        public static final int create_new_account_button=0x7f020004;
-        public static final int fill_information=0x7f020005;
-        public static final int home=0x7f020006;
-        public static final int ic_launcher=0x7f020007;
-        public static final int log_in_button=0x7f020008;
-        public static final int tab_bar_backgroun_unselected=0x7f020009;
-        public static final int tab_bar_background_selected=0x7f02000a;
-        public static final int tab_bar_background_selected_pressed=0x7f02000b;
+        public static final int ab_background_textured_example=0x7f020000;
+        public static final int ab_bottom_solid_example=0x7f020001;
+        public static final int ab_solid_example=0x7f020002;
+        public static final int ab_stacked_solid_example=0x7f020003;
+        public static final int ab_texture_tile_example=0x7f020004;
+        public static final int ab_transparent_example=0x7f020005;
+        public static final int actionbar_tab_bg=0x7f020006;
+        public static final int activitys_background=0x7f020007;
+        public static final int background=0x7f020008;
+        public static final int btn_cab_done_default_example=0x7f020009;
+        public static final int btn_cab_done_example=0x7f02000a;
+        public static final int btn_cab_done_focused_example=0x7f02000b;
+        public static final int btn_cab_done_pressed_example=0x7f02000c;
+        public static final int cab_background_bottom_example=0x7f02000d;
+        public static final int cab_background_top_example=0x7f02000e;
+        public static final int create_account_button=0x7f02000f;
+        public static final int create_new_account_button=0x7f020010;
+        public static final int fill_information=0x7f020011;
+        public static final int home=0x7f020012;
+        public static final int ic_launcher=0x7f020013;
+        public static final int list_focused_example=0x7f020014;
+        public static final int log_in_button=0x7f020015;
+        public static final int menu_dropdown_panel_example=0x7f020016;
+        public static final int pressed_background_example=0x7f020017;
+        public static final int progress_bg_example=0x7f020018;
+        public static final int progress_horizontal_example=0x7f020019;
+        public static final int progress_primary_example=0x7f02001a;
+        public static final int progress_secondary_example=0x7f02001b;
+        public static final int selectable_background_example=0x7f02001c;
+        public static final int spinner_ab_default_example=0x7f02001d;
+        public static final int spinner_ab_disabled_example=0x7f02001e;
+        public static final int spinner_ab_focused_example=0x7f02001f;
+        public static final int spinner_ab_pressed_example=0x7f020020;
+        public static final int spinner_background_ab_example=0x7f020021;
+        public static final int tab_bar_backgroun_unselected=0x7f020022;
+        public static final int tab_bar_background_selected=0x7f020023;
+        public static final int tab_bar_background_selected_pressed=0x7f020024;
+        public static final int tab_indicator_ab_example=0x7f020025;
+        public static final int tab_selected_example=0x7f020026;
+        public static final int tab_selected_focused_example=0x7f020027;
+        public static final int tab_selected_pressed_example=0x7f020028;
+        public static final int tab_unselected_example=0x7f020029;
+        public static final int tab_unselected_focused_example=0x7f02002a;
+        public static final int tab_unselected_pressed_example=0x7f02002b;
     }
     public static final class id {
         public static final int action_settings=0x7f090016;
@@ -116,6 +148,10 @@ public final class R {
     }
     public static final class style {
         public static final int ActionBar=0x7f07000a;
+        public static final int ActionBar_Solid_Example=0x7f07000e;
+        public static final int ActionBar_Transparent_Example=0x7f07000f;
+        public static final int ActionBarTabStyle_Example=0x7f070012;
+        public static final int ActionButton_CloseMode_Example=0x7f070015;
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
@@ -142,8 +178,16 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f070001;
+        public static final int DropDownListView_Example=0x7f070011;
+        public static final int DropDownNav_Example=0x7f070013;
         public static final int MyActionBarTabStyle=0x7f070005;
         public static final int MyActionBarTabTextStyle=0x7f07000c;
+        public static final int PopupMenu_Example=0x7f070010;
+        public static final int ProgressBar_Example=0x7f070014;
+        public static final int Theme_Example=0x7f07000d;
+        /**  this style is only referenced in a Light.DarkActionBar based theme 
+         */
+        public static final int Theme_Example_Widget=0x7f070016;
         /**  ACTION BAR STYLE 
  ACTION BAR STYLE 
          */

@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".NewAccountActivity" 
-    android:background="@color/fill_info_background"
+    android:background="@color/main_activity_color"
     android:orientation="vertical" >
 
     <TextView

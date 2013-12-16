@@ -7,10 +7,9 @@
     <color name="transparent">#0000</color>
     <color name="dark_blue">#073D55</color>
     <color name="black">#000000</color>
-    
-    <color name="first_activity_fill_info">#1B617B</color>
+
     <color name="back_sign_in_button">#B8CACE</color>
-    <color name="fill_info">#ceeeff</color>
+    <color name="fill_info">#E2E9EB</color>
     <color name="fill_info_background">#b2d7ea</color>
     
 </resources>
