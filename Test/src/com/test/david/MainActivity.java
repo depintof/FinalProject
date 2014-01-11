@@ -33,7 +33,7 @@ public class MainActivity extends Activity implements OnClickListener{
 	
 	// JSON Response node names
     private static String KEY_SUCCESS = "success";
-//    private static String KEY_MESSAGE = "message";
+    private static String KEY_MESSAGE = "message";
     private static String KEY_UID = "uid";
     private static String KEY_NAME = "name";
     private static String KEY_EMAIL = "email";
@@ -106,16 +106,12 @@ public class MainActivity extends Activity implements OnClickListener{
 
 				            try {
 				            	
-				            	
 				            	JSONObject json = new JSONObject(jsonString);
 				            	
 				            	if (json.getString(KEY_SUCCESS) != null) {
 				                	String successResponse = json.getString(KEY_SUCCESS);
 				                	
-				                	
-				                	
-				                    if(Integer.parseInt(successResponse) == 1){
-				                    	
+				                    if(Boolean.parseBoolean(successResponse) == true){
 				                    	
 				                    	// Receive response from the server DB
 					                	JSONObject json_user = json.getJSONObject("user");
@@ -124,7 +120,7 @@ public class MainActivity extends Activity implements OnClickListener{
 				                        logInFlag = 1;
 				                        
 				                        // Show the create account message given by the server DB
-				                        info = json_user.getString(KEY_NAME);
+				                        info = "User " + json_user.getString(KEY_NAME) + " is logged";
 				                        
 				                        // Logged In
 				                    	Log.e("JSON String", info);
@@ -139,12 +135,10 @@ public class MainActivity extends Activity implements OnClickListener{
 			                            
 				                    }
 				                    else{
-				                    	info = "Wrong data";
-				                    	
+				                    	info = json.getString(KEY_MESSAGE);
 				                    }
 				            	}
 				            	else{
-				            		
 				            		info = "Insert valid data";
 				            	}
 				            } catch (Exception e) {
@@ -159,7 +153,7 @@ public class MainActivity extends Activity implements OnClickListener{
 			        protected void onPostExecute(String res)
 			        {
 			        	// Show the message obtained by the server side
-			        	Toast.makeText(getBaseContext(), "User " + res + " is logged", Toast.LENGTH_SHORT).show();
+			        	Toast.makeText(getBaseContext(), res, Toast.LENGTH_SHORT).show();
 			        	Log.e("logInFlag", Integer.toString(logInFlag));
 			        	Log.e("logInFlag", res);
 			        	// Finish the activity when the Sign In is successful

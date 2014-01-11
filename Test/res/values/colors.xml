@@ -12,4 +12,7 @@
     <color name="fill_info">#E2E9EB</color>
     <color name="fill_info_background">#b2d7ea</color>
     
+    <color name="tab_background">#2c6883</color>
+    <color name="text_color_side_tab">#13455c</color>
+    
 </resources>

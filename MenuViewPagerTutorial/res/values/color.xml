@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="transparent">#00000000</color>
+    <color name="tab_highlight">#ff9ecfbf</color>
+    
+    <color name="side_tab">#b9cbcf</color>
+    <color name="text_color_side_tab">#13455c</color>
+</resources>

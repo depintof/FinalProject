@@ -22,9 +22,13 @@
     <string name="home_id">ID Casa</string>
     <string name="home_password">Contraseña Casa</string>
     <string name="create_account">Crear Cuenta</string>
-    <string name="title_activity_lights_control">LightsControl</string>
     
     <!-- Strings Activity 3 -->
     <string name="lights_control">Control de Luces</string>
+    <string name="drawer_open">Abrir Lista de Navegación</string>
+    <string name="drawer_close">Cerrar Lista de Navegación</string>
+    
+    <string name="manual_fragment_list">Esta es la lista de luces</string>
+    <string name="manual_fragment_map">Este es el mapa de luces</string>
     
 </resources>

@@ -15,8 +15,12 @@ public class UserFunctions {
     // use http://10.0.2.2/ to connect to your localhost ie http://localhost/
     
 	// Probe on Raspberry
-    private static String loginURL = "http://181.54.32.81:8086/";
-    private static String registerURL = "http://181.54.32.81:8086/";
+//    private static String loginURL = "http://181.54.32.81:8086/";
+//    private static String registerURL = "http://181.54.32.81:8086/";
+    
+    // Probe on Web-Server
+    private static String loginURL = "http://myhome.exeamedia.com/";
+    private static String registerURL = "http://myhome.exeamedia.com/";
      
     private static String login_tag = "login";
     private static String register_tag = "newUser";

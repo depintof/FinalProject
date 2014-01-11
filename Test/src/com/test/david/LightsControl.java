@@ -1,94 +1,184 @@
 package com.test.david;
 
-import android.app.ActionBar;
-import android.app.ActionBar.Tab;
-import android.app.FragmentTransaction;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
-import android.view.Menu;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
-import com.test.tabsswipe.adapter.TabsPagerAdapter;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.MenuItem;
+import com.test.david.pager.ManualFragment;
+import com.test.david.pager.MenuListAdapter;
+//import android.support.v4.view.GravityCompat;
 
-public class LightsControl extends FragmentActivity implements
-		ActionBar.TabListener {
+public class LightsControl extends SherlockFragmentActivity {
 
-	private ViewPager viewPager;
-	// SectionsPagerAdapter mSectionsPagerAdapter
-	TabsPagerAdapter mAdapter;
-	private ActionBar actionBar;
-    
-	// Tab titles
-    private String[] tabs = { "Lista", "Mapa", "Monitoreo" };
+	// Declare Variables
+	DrawerLayout mDrawerLayout;
+	ListView mDrawerList;
+	ActionBarDrawerToggle mDrawerToggle;
+	MenuListAdapter mMenuAdapter;
+	String[] title;
+	String[] subtitle;
+	int[] icon;
+	Fragment fManual = new ManualFragment();
+//	Fragment fragment2 = new Fragment2();
+	private CharSequence mDrawerTitle;
+	private CharSequence mTitle;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_lights_control);
-		
-		// Initialization
-        viewPager = (ViewPager) findViewById(R.id.pager);
-        actionBar = getActionBar();
-        mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
- 
-        viewPager.setAdapter(mAdapter);
-        
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        actionBar.setDisplayShowHomeEnabled(true);
-        
-        // Adding Tabs
-        for (String tab_name : tabs) {
-	      actionBar.addTab(actionBar.newTab().setText(tab_name)
-	      .setTabListener(this));
-        }
-        
-        /**
-         * on swiping the viewpager make respective tab selected
-         * */
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
- 
-            @Override
-            public void onPageSelected(int position) {
-                // on changing the page
-                // make respected tab selected
-                actionBar.setSelectedNavigationItem(position);
-            }
- 
-            @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) {
-            }
- 
-            @Override
-            public void onPageScrollStateChanged(int arg0) {
-            }
-        });
+		// Get the view from drawer_main.xml
+		setContentView(R.layout.lights_control);
 
+		// Get the Title
+		mTitle = mDrawerTitle = getTitle();
+
+		// Generate title
+		title = new String[] { "Control de Luces" , "Configuración" , "Cerrar Sesión"};
+
+		// Generate subtitle
+		subtitle = new String[] { "Modifique el estado de sus luces" , "Cambie sus ajustes" , "Salir de la App"};
+
+		// Generate icon
+		icon = new int[] { R.drawable.manual, R.drawable.tools, R.drawable.logout };
+
+		// Locate DrawerLayout in drawer_main.xml
+		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+		// Locate ListView in drawer_main.xml
+		mDrawerList = (ListView) findViewById(R.id.listview_drawer);
+
+////		 Set a custom shadow that overlays the main content when the drawer
+////		 opens
+//		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
+//				GravityCompat.START);
+
+		// Pass string arrays to MenuListAdapter
+		mMenuAdapter = new MenuListAdapter(LightsControl.this, title, subtitle,
+				icon);
+
+		// Set the MenuListAdapter to the ListView
+		mDrawerList.setAdapter(mMenuAdapter);
+
+		// Capture listview menu item click
+		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+
+		// Enable ActionBar app icon to behave as action to toggle navigation drawer
+		getSupportActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+		// ActionBarDrawerToggle ties together the proper interactions
+		// between the sliding drawer and the action bar app icon
+		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+				R.drawable.ic_drawer, R.string.drawer_open,
+				R.string.drawer_close) {
+
+			public void onDrawerClosed(View view) {
+				// TODO Auto-generated method stub
+				super.onDrawerClosed(view);
+			}
+
+			public void onDrawerOpened(View drawerView) {
+				// TODO Auto-generated method stub
+				// Set the title on the action when drawer open
+				getSupportActionBar().setTitle(mDrawerTitle);
+				super.onDrawerOpened(drawerView);
+			}
+		};
+
+		mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+		if (savedInstanceState == null) {
+			selectItem(0);
+		}
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.lights_control, menu);
-		return true;
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		if (item.getItemId() == android.R.id.home) {
+
+			if (mDrawerLayout.isDrawerOpen(mDrawerList)) {
+				mDrawerLayout.closeDrawer(mDrawerList);
+			} else {
+				mDrawerLayout.openDrawer(mDrawerList);
+			}
+		}
+
+		return super.onOptionsItemSelected(item);
+	}
+
+	// ListView click listener in the navigation drawer
+	private class DrawerItemClickListener implements
+			ListView.OnItemClickListener {
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position,
+				long id) {
+			selectItem(position);
+		}
+	}
+
+	private void selectItem(int position) {
+
+		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+		// Locate Position
+		switch (position) {
+		case 0:
+			ft.replace(R.id.content_frame, fManual);
+			break;
+//		case 1:
+//			ft.replace(R.id.content_frame, fragment2);
+//			break;
+		}
+		ft.commit();
+		mDrawerList.setItemChecked(position, true);
+		// Get the title followed by the position
+		setTitle(title[position]);
+		// Close drawer
+		mDrawerLayout.closeDrawer(mDrawerList);
 	}
 
 	@Override
-	public void onTabReselected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
-		
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		// Sync the toggle state after onRestoreInstanceState has occurred.
+		mDrawerToggle.syncState();
 	}
 
 	@Override
-	public void onTabSelected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
-		
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		// Pass any configuration change to the drawer toggles
+		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
 	@Override
-	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
-		
+	public void setTitle(CharSequence title) {
+		mTitle = title;
+		getSupportActionBar().setTitle(mTitle);
 	}
 
-	
+	@Override
+	public void onBackPressed() {
+
+		FragmentManager manager = getSupportFragmentManager();
+		if (manager.getBackStackEntryCount() > 0) {
+			// If there are back-stack entries, leave the FragmentActivity
+			// implementation take care of them.
+			manager.popBackStack();
+
+		} else {
+			// Otherwise, ask user if he wants to leave :)
+			super.onBackPressed();
+		}
+	}
+
 }
