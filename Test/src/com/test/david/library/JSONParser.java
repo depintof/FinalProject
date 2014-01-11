@@ -17,6 +17,7 @@ import android.util.Log;
 
 
 public class JSONParser {
+
 	static InputStream is = null;
     JSONObject jObj = null;
     static String json = "";
@@ -72,6 +73,6 @@ public class JSONParser {
         }
 
 		return json;
- }
+    }
     
 }
