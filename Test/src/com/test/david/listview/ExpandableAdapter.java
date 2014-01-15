@@ -98,7 +98,9 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
 					roomList.get(groupPosition).setRoomAutomatic(true);
 					sendState = 1;
 				}
-				AsyncTasks setAutomatic = new AsyncTasks("setRoomAutomatic", "1", "myhome_pass", Integer.toString(roomList.get(groupPosition).getRoomID()), Integer.toString(sendState));
+				AsyncTasks setAutomatic = new AsyncTasks();
+				setAutomatic = new AsyncTasks(null, setAutomatic.FUNCTION_SET_ROOM_AUTOMATIC, null, null, null, null, "1", "myhome_pass", Integer.toString(roomList.get(groupPosition).getRoomID()), Integer.toString(sendState), null); 
+//						new AsyncTasks("setRoomAutomatic", "1", "myhome_pass", Integer.toString(roomList.get(groupPosition).getRoomID()), Integer.toString(sendState));
 				setAutomatic.execute();
 				notifyDataSetChanged();
 			}
@@ -112,7 +114,9 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
 				int newDimmerValue;
 				newDimmerValue = seekBar.getProgress();
 				roomList.get(groupPosition).getRoomsList().get(childPosition).setLightLevel(newDimmerValue);
-				AsyncTasks setLevel = new AsyncTasks("setRoomLevel", "1", "myhome_pass", Integer.toString(roomList.get(groupPosition).getRoomID()), Integer.toString(roomList.get(groupPosition).getRoomsList().get(childPosition).getLightLevel()));
+				AsyncTasks setLevel = new AsyncTasks();
+				setLevel = new AsyncTasks(null, setLevel.FUNCTION_SET_ROOM_LEVEL, null, null, null, null, "1", "myhome_pass", Integer.toString(roomList.get(groupPosition).getRoomID()), null, Integer.toString(roomList.get(groupPosition).getRoomsList().get(childPosition).getLightLevel()));
+//						new AsyncTasks("setRoomLevel", "1", "myhome_pass", Integer.toString(roomList.get(groupPosition).getRoomID()), Integer.toString(roomList.get(groupPosition).getRoomsList().get(childPosition).getLightLevel()));
 				setLevel.execute();
 				notifyDataSetChanged();
 			}

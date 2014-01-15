@@ -18,17 +18,6 @@ import com.test.david.pager.MenuListAdapter;
 //import android.support.v4.view.GravityCompat;
 
 public class LightsControl extends SherlockFragmentActivity {
-
-	// Function to be called getHomeState
-	String getHomeStateFunction = "getHomeState";
-	
-	// KEYS FOR BUNDLE DATA
-	public String KEY_NODES = "NODES";
-	public String KEY_HOMENAME = "HOMENAME";
-	public String KEY_NAME = "NAME";
-	public String KEY_LIGHTLEVEL = "LIGHTLEVEL";
-	public String KEY_CONTROL = "CONTROL";
-	public String KEY_AUTOMATIC = "AUTOMATIC";
 	
 	// Declare Variables
 	DrawerLayout mDrawerLayout;

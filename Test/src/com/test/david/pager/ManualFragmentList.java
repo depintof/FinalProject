@@ -48,7 +48,8 @@ public class ManualFragmentList extends SherlockFragment implements AsyncTasksCo
 		homeName = (TextView) view.findViewById(R.id.house_name);
 		
 		// Call the AsyncTasks class to get the values of the house
-		AsyncTasks getState = new AsyncTasks(null, getHomeStateFunction, null, _username, _password, null, null, null);
+		AsyncTasks getState = new AsyncTasks();
+		getState = new AsyncTasks(null, getState.FUNCTION_GET_HOME_STATE, null, _username, _password, null, null, null, null, null, null);
 		getState.delegate = this;
 		getState.execute();
 		

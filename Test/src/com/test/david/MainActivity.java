@@ -68,8 +68,9 @@ public class MainActivity extends Activity implements OnClickListener{
 				username = URLEncoder.encode(usernameInput.getText().toString());
 	    		password = URLEncoder.encode(passwordInput.getText().toString());
 	    		final Activity activity = this;
-	    		AsyncTasks getState = new AsyncTasks(activity, logInFunction, null, username, password, null, null, null);
-	    		getState.execute();
+	    		AsyncTasks logIn = new AsyncTasks();
+	    		logIn = new AsyncTasks(activity, logIn.FUNCTION_LOG_IN, null, username, password, null, null, null, null, null, null);
+	    		logIn.execute();
 	    		
 			}
 		}

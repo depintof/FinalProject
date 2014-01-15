@@ -72,7 +72,8 @@ public class NewAccountActivity extends Activity implements OnClickListener{
 		    @SuppressWarnings("deprecation")
 			String homePassword = URLEncoder.encode(inputHomePassword.getText().toString());
 		    final Activity activity = this;
-    		AsyncTasks createAccount = new AsyncTasks(activity, createAccountFunction, fullName, username, password, email, homeID, homePassword);
+		    AsyncTasks createAccount = new AsyncTasks();
+    		createAccount = new AsyncTasks(activity, createAccount.FUNCTION_CREATE_ACCOUNT, fullName, username, password, email, homeID, homePassword, null, null, null);
     		createAccount.execute();
 		}
 
