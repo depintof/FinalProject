@@ -7,16 +7,10 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
 import android.content.Context;
+import android.util.Log;
 
 public class UserFunctions {
 	private JSONParser jsonParser;
-    
-    // Testing in localhost using wamp or xampp 
-    // use http://10.0.2.2/ to connect to your localhost ie http://localhost/
-    
-	// Probe on Raspberry
-//    private static String loginURL = "http://181.54.32.81:8086/";
-//    private static String registerURL = "http://181.54.32.81:8086/";
     
     // Probe on Web-Server
     private static String loginURL = "http://myhome.exeamedia.com/";
@@ -24,6 +18,9 @@ public class UserFunctions {
      
     private static String login_tag = "login";
     private static String register_tag = "newUser";
+    private static String homestate_tag = "getHomeLevel";
+    private static String set_room_automatic_tag = "setRoomAutomatic";
+    private static String set_room_level_tag = "setRoomLevel";
     
     private static String url_function = "function=";
     private static String url_full_name = "full_name=";
@@ -32,10 +29,13 @@ public class UserFunctions {
     private static String url_email = "email=";
     private static String url_home_id = "home_id=";
     private static String url_home_password = "home_password=";
+    private static String url_room_id = "room_id=";
+    private static String url_automatic = "automatic=";
+    private static String url_level = "level=";
     
     String finalResult = "";
      
-    // constructor
+    // Constructor
     public UserFunctions(){
         jsonParser = new JSONParser();
     }
@@ -45,7 +45,7 @@ public class UserFunctions {
      * @param username
      * @param password
      * */
-//    public JSONObject loginUser(String username, String password){
+
     public String loginUser(String username, String password){
     	
         // Building Parameters
@@ -56,10 +56,8 @@ public class UserFunctions {
         
         final String finalURL = loginURL + "?"+ url_function + login_tag + "&" + login_tag + "=" + username + "&" + url_password + password; 
         
-//        JSONObject json = jsonParser.getJSONFromUrl(loginURL);
         String json = jsonParser.getJSONFromUrl(finalURL);
 
-//        JSONObject json = jsonParser.getJSONFromUrl(loginURL, params);
         return json;
 
     }
@@ -73,26 +71,46 @@ public class UserFunctions {
      * @param homeID
      * @param homePassword
      * */
-//    public JSONObject registerUser(String fullName, String username, String password, String email, String homeID, String homePassword){
     public String registerUser(String fullName, String username, String password, String email, String homeID, String homePassword){
-
-    	// Building Parameters
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("function", register_tag));
-        params.add(new BasicNameValuePair("full_name", fullName));
-        params.add(new BasicNameValuePair("username", username));
-        params.add(new BasicNameValuePair("password", password));
-        params.add(new BasicNameValuePair("email", email));
-        params.add(new BasicNameValuePair("home_id", homeID));
-        params.add(new BasicNameValuePair("home_password", homePassword));
-        
         final String finalURL = registerURL + "?"+ url_function + register_tag + "&" + url_full_name + fullName + "&" + url_username + username + "&" + url_password + password + "&" + url_email + email + "&" + url_home_id + homeID + "&" + url_home_password + homePassword;
-
-        // getting JSON Object
         String jsonString = jsonParser.getJSONFromUrl(finalURL);
         
-//        JSONObject json = jsonParser.getJSONFromUrl(registerURL, params);
-//        Log.e("JSON String", jsonString);
+        return jsonString;
+    }
+    
+    /**
+     * Function to get home data
+     * @param username
+     * @param password
+     * */
+    public String getHomeData(String username, String password){
+        final String finalURL = registerURL + "?"+ url_function + homestate_tag + "&" + url_username + username + "&" + url_password + password + "&home_id=1&home_password=myhome_pass";
+        String jsonString = jsonParser.getJSONFromUrl(finalURL);
+        
+        return jsonString;
+    }
+    
+    /**
+     * Function to set room automatic value
+     * @param homeID
+     * @param homePassword
+     * @param roomID
+     * @param automatic
+     * */
+    public String setRoomAutomatic(String homeID, String homePassword, String roomID, String automatic){
+        final String finalURL = registerURL + "?"+ url_function + set_room_automatic_tag + "&" + url_home_id + homeID + "&" + url_home_password + homePassword + "&" + url_room_id + roomID + "&" + url_automatic + automatic;
+        Log.e("Output", finalURL);
+        String jsonString = jsonParser.getJSONFromUrl(finalURL);
+        Log.e("Output", jsonString);
+        
+        return jsonString;
+    }
+    
+    public String setRoomLevel(String homeID, String homePassword, String roomID, String level){
+        final String finalURL = registerURL + "?"+ url_function + set_room_level_tag + "&" + url_home_id + homeID + "&" + url_home_password + homePassword + "&" + url_room_id + roomID + "&" + url_level + level;
+        Log.e("Output", finalURL);
+        String jsonString = jsonParser.getJSONFromUrl(finalURL);
+        Log.e("Output", jsonString);
         
         return jsonString;
     }

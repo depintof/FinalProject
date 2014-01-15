@@ -4,10 +4,37 @@
     android:layout_height="match_parent" >
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/manual_fragment_map" />
+        android:id="@+id/house_name_map"
+        android:layout_width="match_parent"
+        android:layout_height="36sp"
+        android:ems="10"
+        android:background="@color/house_name"
+        android:text="@string/house_name"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/main_activity_color"
+        android:textAlignment="center"
+        android:gravity="center" >
+    </TextView>
+    
+    <RelativeLayout 
+        android:id="@+id/buttonAlign_map"     
+		android:layout_alignParentBottom="true" 
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingBottom="6sp"
+		android:paddingTop="6sp" >
+         <!-- contebt here -->
+
+        <Button
+            android:id="@+id/turn_all_off_map"
+            android:background="@drawable/turn_all_off_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/turn_all_off"
+            android:layout_centerHorizontal="true"
+            style="@style/turn_all_off_button" />
+         
+    </RelativeLayout>
 
 </RelativeLayout>

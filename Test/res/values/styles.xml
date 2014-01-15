@@ -107,4 +107,31 @@
 	    <item name="android:shadowRadius" >2</item>
   	</style>
   	
+    <!-- 3rd ACTIVITY STYLES -->
+    <!-- Style for the expandable listview -->
+    <style name="category_style" >
+	    <item name="android:layout_width" >fill_parent</item>
+	    <item name="android:layout_height" >wrap_content</item>
+	    <item name="android:textColor" >@color/dark_blue</item>
+	    <item name="android:gravity" >center</item>
+	    <item name="android:layout_margin" >0dp</item>
+	    <item name="android:textSize" >12sp</item>
+	    <item name="android:textStyle" >italic</item>
+  	</style>
+  	
+    <!-- Styles for the TurnAllOff Button -->
+    <style name="turn_all_off_button" >
+	    <item name="android:layout_width" >fill_parent</item>
+	    <item name="android:layout_height" >wrap_content</item>
+	    <item name="android:textColor" >@color/main_activity_color</item>
+	    <item name="android:gravity" >center</item>
+	    <item name="android:layout_margin" >3dp</item>
+	    <item name="android:textSize" >12sp</item>
+	    <item name="android:textStyle" >bold</item>
+	    <item name="android:shadowColor" >@color/transparent</item>
+	    <item name="android:shadowDx" >1</item>
+	    <item name="android:shadowDy" >1</item>
+	    <item name="android:shadowRadius" >2</item>
+  	</style>
+  	
 </resources>

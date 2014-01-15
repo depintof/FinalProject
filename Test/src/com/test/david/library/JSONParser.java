@@ -35,7 +35,8 @@ public class JSONParser {
             DefaultHttpClient httpClient = new DefaultHttpClient();
             HttpPost httpPost = new HttpPost(url);
 // 	                httpPost.setEntity(new UrlEncodedFormEntity(parameters, "utf-8"));
-
+            httpPost.setHeader("Accept-Charset","utf-8");
+            
             HttpResponse httpResponse = httpClient.execute(httpPost);
             HttpEntity httpEntity = httpResponse.getEntity();
             is = httpEntity.getContent();
@@ -59,7 +60,7 @@ public class JSONParser {
     	
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(
-                    is, "iso-8859-1"), 8);
+                    is, "UTF-8"), 8000);
             StringBuilder sb = new StringBuilder();
             String line = null;
             while ((line = reader.readLine()) != null) {
@@ -72,7 +73,20 @@ public class JSONParser {
             Log.e("Buffer Error", "Error converting result " + e.toString());
         }
 
+        json = replaceSpecialCharacters(json);
+        
 		return json;
+    }
+    
+    
+    public String replaceSpecialCharacters(String json){
+    	json = json.replaceAll("&ntilde", "ñ");
+    	json = json.replaceAll("&aacute", "á");
+    	json = json.replaceAll("&eacute", "é");
+    	json = json.replaceAll("&iacute", "í");
+    	json = json.replaceAll("&oacute", "ó");
+    	json = json.replaceAll("&uacute", "ú");
+    	return json;
     }
     
 }

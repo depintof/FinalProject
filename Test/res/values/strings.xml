@@ -27,8 +27,11 @@
     <string name="lights_control">Control de Luces</string>
     <string name="drawer_open">Abrir Lista de Navegación</string>
     <string name="drawer_close">Cerrar Lista de Navegación</string>
+        
+    <string name="house_name">Nombre de la Casa</string>
+    <string name="turn_all_off">Apagar Luces</string>
     
-    <string name="manual_fragment_list">Esta es la lista de luces</string>
-    <string name="manual_fragment_map">Este es el mapa de luces</string>
+    <string name="mode">Modo</string>
+    <string name="rooms_tag">Locación</string>
     
 </resources>

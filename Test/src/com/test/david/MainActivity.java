@@ -16,7 +16,9 @@ import com.test.david.async.AsyncTasks;
 import com.test.david.library.InternetResponse;
 
 public class MainActivity extends Activity implements OnClickListener{
-
+	public String username;
+	public String password;
+	
 	// Widgets variables
 	Button logIn;
 	EditText usernameInput;
@@ -55,19 +57,20 @@ public class MainActivity extends Activity implements OnClickListener{
 		startActivity(intentNewAccount);
 	}
 
+	@SuppressWarnings("deprecation")
 	public void onClick(View v) {
-
 		if(v == logIn){
 			InternetResponse internetResponse = new InternetResponse();
 			if(internetResponse.checkOnlineState(getApplicationContext())==false){
 	            Toast.makeText(getBaseContext(), "Please check your Internet Connection", Toast.LENGTH_SHORT).show();
 			}
 			else{
-				String username = URLEncoder.encode(usernameInput.getText().toString());
-	    		String password = URLEncoder.encode(passwordInput.getText().toString());
+				username = URLEncoder.encode(usernameInput.getText().toString());
+	    		password = URLEncoder.encode(passwordInput.getText().toString());
 	    		final Activity activity = this;
 	    		AsyncTasks getState = new AsyncTasks(activity, logInFunction, null, username, password, null, null, null);
 	    		getState.execute();
+	    		
 			}
 		}
 	}

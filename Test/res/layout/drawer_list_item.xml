@@ -4,13 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/dropdownListPreferredItemHeight"
     android:background="?android:attr/activatedBackgroundIndicator"
-    android:orientation="horizontal" >
+    android:orientation="horizontal"
+    android:layout_marginLeft="4sp"
+    android:layout_marginRight="4sp"
+    android:layout_marginTop="4sp"
+    android:layout_marginBottom="4sp" >
 
     <ImageView
         android:id="@+id/icon"
+        android:layout_marginLeft="8sp"
+    	android:layout_marginRight="8sp"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:adjustViewBounds="true" />
+        android:layout_height="36sp"
+        android:adjustViewBounds="true"
+        android:layout_gravity="center" />
 
     <LinearLayout
         android:layout_width="wrap_content"

@@ -2,12 +2,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
+    
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/house_name"
+        android:layout_width="match_parent"
+        android:layout_height="36sp"
+        android:ems="10"
+        android:background="@color/house_name"
+        android:text="@string/house_name"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/main_activity_color"
+        android:textAlignment="center"
+        android:gravity="center" >
+    </TextView>
+    
+    <RelativeLayout 
+        android:id="@+id/buttonAlign"     
+		android:layout_alignParentBottom="true" 
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingBottom="6sp"
+		android:paddingTop="6sp" >
+         <!-- contebt here -->
+
+        <Button
+            android:id="@+id/turn_all_off"
+            android:background="@drawable/turn_all_off_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/turn_all_off"
+            android:layout_centerHorizontal="true"
+            style="@style/turn_all_off_button" />
+         
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/house_info"
+        android:background="@color/expandable_list"
+	    android:layout_width="match_parent"
+	    android:layout_height="48dp"
+	    android:orientation="horizontal"
+        android:layout_below="@id/house_name" >
+	 
+		<TextView
+	        android:id="@+id/mode"
+	        android:layout_width="60sp"
+	        android:layout_height="match_parent"
+	        android:text="@string/mode"
+	        android:textSize="12sp"
+	        android:textStyle="italic"
+	        android:textColor="@color/dark_blue"
+	        android:gravity="center"
+	        android:layout_gravity="center" />
+	    
+	    <TextView
+	        android:id="@+id/rooms_tag"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:paddingLeft="12sp"
+	        android:gravity="center"
+	        android:text="@string/rooms_tag"
+	        android:textStyle="italic"
+	        android:textSize="14sp"
+	        android:textColor="@color/dark_blue"
+	        android:layout_toRightOf="@id/mode" />
+	
+	</RelativeLayout>
+
+    
+    <ExpandableListView
+        android:id="@+id/expandableListView1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/manual_fragment_list" />
+        android:layout_above="@id/buttonAlign"
+        android:layout_below="@id/house_info"
+        android:divider="@color/transparent" >
+
+    </ExpandableListView>
+    
+    
+    
 
 </RelativeLayout>

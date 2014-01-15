@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bar_background">#0f4459</color>
+    <color name="main_activity_color">#FFFFFF</color>
+
+    <color name="underlined_text">#76C0F2</color>
+    <color name="transparent">#0000</color>
+    <color name="dark_blue">#073D55</color>
+    <color name="black">#000000</color>
+
+    <color name="back_sign_in_button">#B8CACE</color>
+    <color name="fill_info">#E2E9EB</color>
+    <color name="fill_info_background">#b2d7ea</color>
+    
+    <color name="tab_background">#2c6883</color>
+    <color name="text_color_side_tab">#13455c</color>
+    
+    <color name="expandable_list">#e2e9eb</color>
+    <color name="expandable_list_selected">#b9cbcf</color>
+    
+</resources>

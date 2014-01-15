@@ -27,8 +27,6 @@ public class NewAccountActivity extends Activity implements OnClickListener{
     
     // Async createAccount Function to be called
  	String createAccountFunction = "createAccount";
-    
-    MainActivity mainActivity = new MainActivity();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,16 +59,21 @@ public class NewAccountActivity extends Activity implements OnClickListener{
 		}
 		else{
 			// here goes your network call
-		    String fullName = URLEncoder.encode(inputFullName.getText().toString());
-		    String username = URLEncoder.encode(inputUserName.getText().toString());
-		    String password = URLEncoder.encode(inputPassword.getText().toString());
-		    String email = URLEncoder.encode(inputEmail.getText().toString());
-		    String homeID = URLEncoder.encode(inputHomeID.getText().toString());
-		    String homePassword = URLEncoder.encode(inputHomePassword.getText().toString());
+		    @SuppressWarnings("deprecation")
+			String fullName = URLEncoder.encode(inputFullName.getText().toString());
+		    @SuppressWarnings("deprecation")
+			String username = URLEncoder.encode(inputUserName.getText().toString());
+		    @SuppressWarnings("deprecation")
+			String password = URLEncoder.encode(inputPassword.getText().toString());
+		    @SuppressWarnings("deprecation")
+			String email = URLEncoder.encode(inputEmail.getText().toString());
+		    @SuppressWarnings("deprecation")
+			String homeID = URLEncoder.encode(inputHomeID.getText().toString());
+		    @SuppressWarnings("deprecation")
+			String homePassword = URLEncoder.encode(inputHomePassword.getText().toString());
 		    final Activity activity = this;
-    		AsyncTasks getState = new AsyncTasks(activity, createAccountFunction, fullName, username, password, email, homeID, homePassword);
-    		getState.execute();
-		   			
+    		AsyncTasks createAccount = new AsyncTasks(activity, createAccountFunction, fullName, username, password, email, homeID, homePassword);
+    		createAccount.execute();
 		}
 
 	}

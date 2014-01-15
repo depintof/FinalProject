@@ -19,6 +19,17 @@ import com.test.david.pager.MenuListAdapter;
 
 public class LightsControl extends SherlockFragmentActivity {
 
+	// Function to be called getHomeState
+	String getHomeStateFunction = "getHomeState";
+	
+	// KEYS FOR BUNDLE DATA
+	public String KEY_NODES = "NODES";
+	public String KEY_HOMENAME = "HOMENAME";
+	public String KEY_NAME = "NAME";
+	public String KEY_LIGHTLEVEL = "LIGHTLEVEL";
+	public String KEY_CONTROL = "CONTROL";
+	public String KEY_AUTOMATIC = "AUTOMATIC";
+	
 	// Declare Variables
 	DrawerLayout mDrawerLayout;
 	ListView mDrawerList;
@@ -27,16 +38,33 @@ public class LightsControl extends SherlockFragmentActivity {
 	String[] title;
 	String[] subtitle;
 	int[] icon;
-	Fragment fManual = new ManualFragment();
-//	Fragment fragment2 = new Fragment2();
+	
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
-
+	
+	Fragment fManual = new ManualFragment();
+//	Fragment fragment2 = new Fragment2();
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// Get the view from drawer_main.xml
 		setContentView(R.layout.lights_control);
+		
+		// Get and Pass the data to the other classes
+		String username = "";
+		String password = "";
+		// Get data from the LogIn Activity
+		Bundle extras = getIntent().getExtras();
+		if (extras != null) {
+		    username = extras.getString("USERNAME");
+		    password = extras.getString("PASSWORD");
+		}
+		Bundle b = new Bundle();
+		b.putString("USERNAME", username);
+		b.putString("PASSWORD", password);
+		fManual.setArguments(b);
+		
 
 		// Get the Title
 		mTitle = mDrawerTitle = getTitle();
@@ -48,18 +76,13 @@ public class LightsControl extends SherlockFragmentActivity {
 		subtitle = new String[] { "Modifique el estado de sus luces" , "Cambie sus ajustes" , "Salir de la App"};
 
 		// Generate icon
-		icon = new int[] { R.drawable.manual, R.drawable.tools, R.drawable.logout };
+		icon = new int[] { R.drawable.control, R.drawable.tools, R.drawable.log_out };
 
 		// Locate DrawerLayout in drawer_main.xml
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
 		// Locate ListView in drawer_main.xml
 		mDrawerList = (ListView) findViewById(R.id.listview_drawer);
-
-////		 Set a custom shadow that overlays the main content when the drawer
-////		 opens
-//		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
-//				GravityCompat.START);
 
 		// Pass string arrays to MenuListAdapter
 		mMenuAdapter = new MenuListAdapter(LightsControl.this, title, subtitle,
@@ -101,6 +124,7 @@ public class LightsControl extends SherlockFragmentActivity {
 		}
 	}
 
+	// Interaction when the home icon is pressed: Opens or closes the list drawer
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 

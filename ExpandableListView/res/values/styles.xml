@@ -1,0 +1,17 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppTheme" parent="android:Theme.Light" />
+    
+    <!-- Styles for the Sign In Button -->
+    <style name="category_style" >
+	    <item name="android:layout_width" >fill_parent</item>
+	    <item name="android:layout_height" >wrap_content</item>
+	    <item name="android:textColor" >@color/dark_blue</item>
+	    <item name="android:gravity" >center</item>
+	    <item name="android:layout_margin" >0dp</item>
+	    <item name="android:textSize" >16sp</item>
+	    <item name="android:textStyle" >italic</item>
+  	</style>
+ 
+
+</resources>

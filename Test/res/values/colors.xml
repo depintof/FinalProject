@@ -15,4 +15,9 @@
     <color name="tab_background">#2c6883</color>
     <color name="text_color_side_tab">#13455c</color>
     
+    <color name="expandable_list">#e2e9eb</color>
+    <color name="expandable_list_selected">#b9cbcf</color>
+    
+    <color name="house_name">#629db8</color>
+    
 </resources>

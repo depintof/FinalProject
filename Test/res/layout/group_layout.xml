@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="48sp"
+    android:orientation="horizontal" >
+ 
+	<LinearLayout
+	    android:background="@drawable/category_color"
+        android:layout_width="48sp"
+        android:layout_height="48sp"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center" >
+        
+        <ImageView
+			android:id="@+id/mode_info"
+			android:layout_width="30sp"
+			android:layout_height="30sp"
+			android:src="@drawable/manual"
+			android:gravity="center_horizontal"
+			android:layout_gravity="center_horizontal" />
+        
+    </LinearLayout>
+    
+    <TextView
+        android:id="@+id/groupName"
+        android:background="@drawable/category_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="12sp"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical"
+        style="@style/category_style" />
+
+</LinearLayout>
